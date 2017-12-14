@@ -1,0 +1,31 @@
+ {
+     // Required
+     "manifest_version": 2,
+     "name": "Auto Click",
+     "version": "0.1",
+ 
+     // Recommended 
+     "description": "Auto click",
+     "icons": {
+         "16": "images/icon1.ico"
+     },
+     "content_scripts": [
+        {
+          "matches": [
+            "<all_urls>"
+          ],
+          "js": ["scripts/jquery-3.2.1.min.js","scripts/execute.js", "scripts/autoclick.js"]
+          // "js": ["scripts/jquery-3.2.1.js","scripts/execute.js", "scripts/autoclick.js"]
+          // "js": ["scripts/jquery-1.12.4.min.js"]
+        }
+      ],
+      "web_accessible_resources": ["scripts/autoclick.js"],
+     "browser_action": {
+         "default_icon": "images/icon1.ico"
+     },
+     "permissions": [
+         "https://*/*",
+         "http://*/*",
+         "tabs"
+     ]
+ }
