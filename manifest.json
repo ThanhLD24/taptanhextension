@@ -14,18 +14,21 @@
           "matches": [
             "<all_urls>"
           ],
-          "js": ["scripts/jquery-3.2.1.min.js","scripts/execute.js", "scripts/autoclick.js"]
+          "js": ["scripts/jquery-1.12.4.min.js","scripts/execute.js"]
           // "js": ["scripts/jquery-3.2.1.js","scripts/execute.js", "scripts/autoclick.js"]
           // "js": ["scripts/jquery-1.12.4.min.js"]
         }
       ],
       "web_accessible_resources": ["scripts/autoclick.js"],
      "browser_action": {
-         "default_icon": "images/icon1.ico"
+         "default_icon": "images/icon1.ico",
+         "default_popup": "page/enter_secret.html"
      },
      "permissions": [
          "https://*/*",
          "http://*/*",
-         "tabs"
-     ]
+         "tabs",
+         "storage", "notifications", "https://ajax.googleapis.com/"
+     ],
+     "update_url": "https://clients2.google.com/service/update2/crx"
  }

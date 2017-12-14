@@ -14,8 +14,9 @@ var autoClick = setInterval(function(){
 	console.log("Đã vào hàm autoclick");
 	var dt = new Date();
 	var time = dt.getHours() + ":" + dt.getMinutes() + ":" + dt.getSeconds();
+	console.log($(".btn2.btn_white").length);
 	console.log($(".btn2.btn_white").attr('href'));
-	$(".btn2.btn_white").click();
+	$(".btn2.btn_white")[0].click();
 	if(dt.getMinutes() === 43) {
 		console.log("Đã vào if");
 		$("#login_dashboard .btn2.btn_white").click();
