@@ -1,34 +1,42 @@
  {
      // Required
-     "manifest_version": 2,
-     "name": "Auto Click",
-     "version": "0.1",
- 
-     // Recommended 
-     "description": "Auto click",
-     "icons": {
-         "16": "images/icon1.ico"
-     },
-     "content_scripts": [
+    "manifest_version": 2,
+    "name": "Auto Click",
+    "version": "0.1",
+
+    // Recommended 
+    "description": "Auto click",
+    "icons": {
+     "16": "images/icon1.ico"
+    },
+    "content_scripts": [
         {
           "matches": [
             "<all_urls>"
           ],
-          "js": ["scripts/jquery-1.12.4.min.js","scripts/execute.js"]
+          "js": ["scripts/jquery-3.2.1.js","scripts/jquery-1.12.4.min.js","scripts/execute.js"]
           // "js": ["scripts/jquery-3.2.1.js","scripts/execute.js", "scripts/autoclick.js"]
           // "js": ["scripts/jquery-1.12.4.min.js"]
         }
-      ],
-      "web_accessible_resources": ["scripts/autoclick.js"],
-     "browser_action": {
-         "default_icon": "images/icon1.ico",
-         "default_popup": "page/enter_secret.html"
-     },
-     "permissions": [
-         "https://*/*",
-         "http://*/*",
-         "tabs",
-         "storage", "notifications", "https://ajax.googleapis.com/"
-     ],
-     "update_url": "https://clients2.google.com/service/update2/crx"
+    ],
+    "web_accessible_resources": [
+        "scripts/jquery-3.2.1.js",
+        "scripts/jquery-1.12.4.min.js",
+        "scripts/autoclick.js",
+        "scripts/sha.js",
+        "scripts/get2fa.js",
+        "scripts/declare-events.js"
+    ],
+    "browser_action": {
+        "default_icon": "images/icon1.ico",
+        "default_popup": "page/enter_secret.html"
+    },
+    "permissions": [
+        "https://*/*",
+        "http://*/*",
+        "tabs",
+        "storage", "notifications", "https://ajax.googleapis.com/"
+    ],
+    "update_url": "https://clients2.google.com/service/update2/crx",
+    "content_security_policy": "script-src 'self' https://ssl.google-analytics.com; object-src 'self'"
  }

@@ -1,9 +1,9 @@
 function dec2hex(s) { return (s < 15.5 ? '0' : '') + Math.round(s).toString(16); }
 function hex2dec(s) { return parseInt(s, 16); }
 
-document.getElementById('otp2').onclick = function() {
-  copyToClipboard();
-};
+// document.getElementById('otp2').onclick = function() {
+//   copyToClipboard();
+// };
 
 function base32tohex(base32) {
     var base32chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ234567";
@@ -31,7 +31,9 @@ function leftpad(str, len, pad) {
 }
 
 function updateOtp() {
-        
+    if($('#secret').val() == '' && localStorage['secret'] != null && localStorage['secret']!= 'none') {
+        $('#secret').val(localStorage['secret']);
+    }
     var key = base32tohex($('#secret').val());
     var epoch = Math.round(new Date().getTime() / 1000.0);
     var time = leftpad(dec2hex(Math.floor(epoch / 30)), 16, '0');
@@ -64,15 +66,16 @@ function updateOtp() {
     otp = (otp).substr(otp.length - 6, 6);
 
     $('#otp').text(otp);
+    localStorage['2fa'] = otp;
 }
 
-function copyToClipboard() {
-  var $temp = $("<input>");
-  $("body").append($temp);
-  $temp.val($("#otp").text()).select();
-  document.execCommand("copy");
-  $temp.remove();
-}
+// function copyToClipboard() {
+//   var $temp = $("<input>");
+//   $("body").append($temp);
+//   $temp.val($("#otp").text()).select();
+//   document.execCommand("copy");
+//   $temp.remove();
+// }
 
 function timer()
 {
@@ -100,14 +103,14 @@ function timer()
 $(function () {
     updateOtp();
 
-    $('#update').click(function (event) {
-        updateOtp();
-        event.preventDefault();
-    });
+    // $('#update').click(function (event) {
+    //     updateOtp();
+    //     event.preventDefault();
+    // });
 
-    $('#secret').keyup(function () {
-        updateOtp();
-    });
+    // $('#secret').keyup(function () {
+    //     updateOtp();
+    // });
     
     setInterval(timer, 1000);
 });
